@@ -1,12 +1,22 @@
 ---
-- name: ensure destination for compose file exists
-  file:
-    path: "{{ docker_compose_generator_output_path }}"
-    state: directory
+- name: Filter unique staks
+  ansible.builtin.set_fact:
+    container_stacks: "{{ containers | map(attribute='stack') | unique }}"
 
-- name: write docker-compose file
-  template:
-    src: ../templates/docker-compose.yml.j2
-    dest: "{{ docker_compose_generator_output_path }}/docker-compose.yml"
+- name: Ensure destination for compose file exists
+  ansible.builtin.file:
+    path: "{{ docker_compose_generator_output_path }}/{{ container_stacks }}"
+    state: directory
+  loop: "{{ container_stacks }}"
+    
+- name: Write docker-compose file
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: "{{ docker_compose_generator_output_path }}/{{ container_stacks }}/docker-compose.yml"
     owner: "{{ docker_compose_generator_uid }}"
     group: "{{ docker_compose_generator_gid }}"
+  loop: "{{ container_stacks }}"
+  loop_control:
+    loop_var: loop_stack
+  vars:
+    stack_containers: "{{ containers | selectattr('stack', '==', loop_stack) }}"
