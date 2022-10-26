@@ -5,12 +5,6 @@ Pass this role a hash and it will generate multiple docker-compose.yml files. Th
 Rendered files are output to the `docker_compose_generator_output_path`/`containers.stack` directory.
 
 ### Variables
-`appdata_path`
-
-`container_config_path`
-
-`container_data_path`
-
 `docker_compose_generator_output_path`
 
 `docker_compose_generator_uid`
