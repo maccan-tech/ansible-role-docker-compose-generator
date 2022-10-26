@@ -1,8 +1,19 @@
 # ansible-role-docker-compose-generator
 
-Pass this role a hash and it will generate a docker-compose.yml file. The following structure is supported and is designed to be passed to the role using `group_vars`.
+Pass this role a hash and it will generate multiple docker-compose.yml files. The following structure is supported and is designed to be passed to the role using `group_vars` or `host_vars`.
 
-Rendered files are output to the `output` directory.
+Rendered files are output to the `docker_compose_generator_output_path`/`containers.stack` directory.
+
+### Variables
+`appdata_path`
+`container_config_path`
+`container_data_path`
+`docker_compose_generator_output_path`
+`docker_compose_generator_uid`
+`docker_compose_generator_gid`
+`global_env_vars`
+`containers` list of docker services
+
 
 ```
 ---
