@@ -6,12 +6,19 @@ Rendered files are output to the `docker_compose_generator_output_path`/`contain
 
 ### Variables
 `appdata_path`
+
 `container_config_path`
+
 `container_data_path`
+
 `docker_compose_generator_output_path`
+
 `docker_compose_generator_uid`
+
 `docker_compose_generator_gid`
+
 `global_env_vars`
+
 `containers` list of docker services
 
 
