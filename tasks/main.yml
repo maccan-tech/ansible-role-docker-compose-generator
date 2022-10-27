@@ -1,7 +1,7 @@
 ---
 - name: Filter unique staks
   ansible.builtin.set_fact:
-    container_stacks: "{{ containers | map(attribute='stack') | unique }}"
+    container_stacks: "{{ containers | map(attribute='stack') | unique | list }}"
 
 - name: Ensure destination for compose file exists
   ansible.builtin.file:
