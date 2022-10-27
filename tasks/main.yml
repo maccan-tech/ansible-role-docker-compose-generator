@@ -5,7 +5,7 @@
 
 - name: Ensure destination for compose file exists
   ansible.builtin.file:
-    path: "{{ docker_compose_generator_output_path }}/{{ container_stacks }}"
+    path: "{{ docker_compose_generator_output_path }}/{{ item }}"
     state: directory
   loop: "{{ container_stacks }}"
     
