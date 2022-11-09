@@ -22,6 +22,9 @@ services:
 {% if container.privileged is defined %}
     privileged: {{ container.privileged }}
 {% endif %}
+{% if container.user is defined %}
+    user: {{ container.user }}
+{% endif %}
 {% if container.cap_add is defined %}
     cap_add: 
 {% for cap in container.cap_add %}
